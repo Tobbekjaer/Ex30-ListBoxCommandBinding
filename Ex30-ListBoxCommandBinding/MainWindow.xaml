@@ -6,7 +6,23 @@
         xmlns:local="clr-namespace:Ex30_ListBoxCommandBinding"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid >
+        <ListBox x:Name="ListBox" ItemsSource="{Binding ProductsVM}" SelectedItem="{Binding SelectedProduct}" SelectionChanged="ListBox_SelectionChanged" Margin="99,57,476,104" Width="NaN" Height="NaN">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBox x:Name="Nametxtbox" HorizontalAlignment="Left" Margin="497,157,0,0" TextWrapping="Wrap" Text="{Binding SelectedProduct.Name, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Pricetxtbox" HorizontalAlignment="Left" Margin="497,217,0,0" TextWrapping="Wrap" Text="{Binding SelectedProduct.Price, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="400,153,0,0" VerticalAlignment="Top"/>
+        <Label Content="Price:" HorizontalAlignment="Left" Margin="400,213,0,0" VerticalAlignment="Top"/>
+        <Label Content="Products:" HorizontalAlignment="Left" Margin="99,18,0,0" VerticalAlignment="Top"/>
+        <Button Content="New Product" Command="{Binding NewProduct}" CommandParameter="{Binding}" HorizontalAlignment="Left" Margin="129,359,0,0" VerticalAlignment="Top"/>
+        <Button Content="Delete Product" Command="{Binding DeleteProduct}" CommandParameter="{Binding}" HorizontalAlignment="Left" Margin="224,359,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

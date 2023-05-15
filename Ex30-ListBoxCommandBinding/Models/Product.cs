@@ -22,7 +22,13 @@ namespace Ex30_ListBoxCommandBinding.Models
 			set { _price = value; }
 		}
 
+		public Product(string name, double price)
+		{
+			_name = name;
+			_price = price;
+		}
 
 
-	}
+
+    }
 }

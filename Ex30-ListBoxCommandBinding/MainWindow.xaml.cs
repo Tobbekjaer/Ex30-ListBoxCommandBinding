@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ex30_ListBoxCommandBinding.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,24 @@ namespace Ex30_ListBoxCommandBinding
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainViewModel mvm = new MainViewModel();
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = mvm;
+
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ListBox.SelectedItem != null) {
+                mvm.UpdateSelectedProduct();
+            }
+            else {
+
+            }
+           
         }
     }
 }
